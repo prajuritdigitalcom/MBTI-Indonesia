@@ -1,0 +1,6 @@
+{
+  "name": "MBTI Indonesia",
+  "description": "Tes kepribadian modern berbasis model psikologi Jungian yang disesuaikan untuk pengguna Indonesia secara mobile-first.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
