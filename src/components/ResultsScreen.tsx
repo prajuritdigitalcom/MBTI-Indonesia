@@ -309,36 +309,59 @@ export default function ResultsScreen({ scores, userName, onRetake, onViewHistor
       </div>
 
       {/* Tabs Menu */}
-      <div className="flex p-1 bg-gray-100 dark:bg-slate-850 rounded-2xl border border-gray-200/40 dark:border-slate-800">
+      <div className="relative flex p-1.5 bg-gray-50 dark:bg-slate-900 rounded-2xl border border-gray-150 dark:border-slate-800">
         <button
           onClick={() => setActiveTab('overview')}
-          className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all cursor-pointer ${
-            activeTab === 'overview'
-              ? 'bg-white dark:bg-slate-800 text-gray-950 dark:text-white shadow-sm'
-              : 'text-gray-500 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200'
-          }`}
+          className="relative flex-1 py-3 px-1 text-[10px] sm:text-xs font-black uppercase tracking-wider rounded-xl transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 z-10"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          Ikhtisar & Karakter
+          {activeTab === 'overview' && (
+            <motion.span
+              layoutId="activeTabBackground"
+              className="absolute inset-0 bg-white dark:bg-slate-800 rounded-xl shadow-xs border border-gray-100 dark:border-slate-700/50 z-[-1]"
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+            />
+          )}
+          <Award size={14} className={activeTab === 'overview' ? 'text-[#fe4c6f]' : 'text-gray-400 dark:text-slate-500'} />
+          <span className={activeTab === 'overview' ? 'text-gray-950 dark:text-white' : 'text-gray-500 dark:text-slate-400'}>
+            Karakter
+          </span>
         </button>
+        
         <button
           onClick={() => setActiveTab('style')}
-          className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all cursor-pointer ${
-            activeTab === 'style'
-              ? 'bg-white dark:bg-slate-800 text-gray-950 dark:text-white shadow-sm'
-              : 'text-gray-500 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200'
-          }`}
+          className="relative flex-1 py-3 px-1 text-[10px] sm:text-xs font-black uppercase tracking-wider rounded-xl transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 z-10"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          Gaya Hidup & Stres
+          {activeTab === 'style' && (
+            <motion.span
+              layoutId="activeTabBackground"
+              className="absolute inset-0 bg-white dark:bg-slate-800 rounded-xl shadow-xs border border-gray-100 dark:border-slate-700/50 z-[-1]"
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+            />
+          )}
+          <Heart size={14} className={activeTab === 'style' ? 'text-[#6B5BFF]' : 'text-gray-400 dark:text-slate-500'} />
+          <span className={activeTab === 'style' ? 'text-gray-950 dark:text-white' : 'text-gray-500 dark:text-slate-400'}>
+            Gaya Hidup
+          </span>
         </button>
+
         <button
           onClick={() => setActiveTab('career')}
-          className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all cursor-pointer ${
-            activeTab === 'career'
-              ? 'bg-white dark:bg-slate-800 text-gray-950 dark:text-white shadow-sm'
-              : 'text-gray-500 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200'
-          }`}
+          className="relative flex-1 py-3 px-1 text-[10px] sm:text-xs font-black uppercase tracking-wider rounded-xl transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 z-10"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          Karier & Tips
+          {activeTab === 'career' && (
+            <motion.span
+              layoutId="activeTabBackground"
+              className="absolute inset-0 bg-white dark:bg-slate-800 rounded-xl shadow-xs border border-gray-100 dark:border-slate-700/50 z-[-1]"
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+            />
+          )}
+          <Briefcase size={14} className={activeTab === 'career' ? 'text-amber-500' : 'text-gray-400 dark:text-slate-500'} />
+          <span className={activeTab === 'career' ? 'text-gray-950 dark:text-white' : 'text-gray-500 dark:text-slate-400'}>
+            Karier & Tips
+          </span>
         </button>
       </div>
 
@@ -646,15 +669,11 @@ export default function ResultsScreen({ scores, userName, onRetake, onViewHistor
               </div>
             </div>
 
-            {/* Bottom Footer Watermark / QR Place */}
-            <div className="flex justify-between items-center pt-4 border-t border-white/10">
-              <div>
-                <p className="text-sm text-white/40 uppercase tracking-widest font-semibold">Tersedia di browser gratis</p>
-                <p className="text-2xl font-black tracking-tight text-white mt-1">mbti.indonesia.app</p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-white/40 uppercase tracking-widest font-semibold">Fondasi Algoritma</p>
-                <p className="text-xl font-bold text-white mt-1">OpenJung Core Framework</p>
+            {/* Bottom Footer Watermark */}
+            <div className="flex justify-center items-center pt-8 border-t border-white/15">
+              <div className="text-center">
+                <p className="text-base text-white/40 uppercase tracking-widest font-semibold">Fondasi Algoritma</p>
+                <p className="text-2xl font-black text-white mt-1.5">OpenJung Core Framework</p>
               </div>
             </div>
           </div>
