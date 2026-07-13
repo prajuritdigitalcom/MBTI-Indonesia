@@ -25,11 +25,11 @@ export default function WelcomeScreen({ onStart, onViewHistory, hasHistory }: We
   return (
     <div className="flex flex-col items-center justify-between min-h-[85vh] py-4 px-4 w-full max-w-md mx-auto">
       {/* Abstract Animated Illustration */}
-      <div className="relative w-full h-48 flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-linear-to-b from-white to-gray-50 dark:from-slate-800/50 dark:to-slate-900/50 p-4 border border-gray-100 dark:border-slate-800 shadow-xs">
+      <div className="relative w-full h-52 flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-linear-to-b from-white to-gray-50 dark:from-slate-800/50 dark:to-slate-900/50 p-4 border border-gray-100 dark:border-slate-800 shadow-xs">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute w-36 h-36 border-2 border-dashed border-[#6B5BFF]/30 rounded-full"
+          className="absolute w-44 h-44 border-2 border-dashed border-[#6B5BFF]/20 rounded-full"
         />
         <motion.div
           animate={{ scale: [1, 1.05, 1] }}
@@ -39,28 +39,65 @@ export default function WelcomeScreen({ onStart, onViewHistory, hasHistory }: We
         
         {/* Floating cards representing personality types */}
         <motion.div
-          initial={{ x: -40, y: 15, rotate: -10 }}
-          animate={{ y: [15, 5, 15] }}
+          initial={{ x: -145, y: -50, rotate: -10 }}
+          animate={{ y: [-50, -42, -50] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-1/4 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-[#fe4c6f] flex items-center gap-1"
+          className="absolute left-1/2 bg-white dark:bg-slate-800 px-2.5 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-[#fe4c6f] flex items-center gap-1 z-10"
         >
           <span className="w-2 h-2 rounded-full bg-[#fe4c6f]" /> INTJ
         </motion.div>
 
         <motion.div
-          initial={{ x: 45, y: -20, rotate: 12 }}
-          animate={{ y: [-20, -10, -20] }}
+          initial={{ x: 145, y: -50, rotate: 12 }}
+          animate={{ y: [-50, -58, -50] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-1/4 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-[#6B5BFF] flex items-center gap-1"
+          className="absolute left-1/2 bg-white dark:bg-slate-800 px-2.5 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-[#6B5BFF] flex items-center gap-1 z-10"
         >
           <span className="w-2 h-2 rounded-full bg-[#6B5BFF]" /> ENFP
         </motion.div>
 
+        {/* Additional floating personality types to fill space */}
         <motion.div
-          initial={{ y: 35, rotate: 2 }}
-          animate={{ scale: [1, 1.03, 1] }}
+          initial={{ x: -160, y: 0, rotate: -8 }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/2 bg-white dark:bg-slate-800 px-2.5 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-emerald-500 flex items-center gap-1 z-10"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-500" /> INFJ
+        </motion.div>
+
+        <motion.div
+          initial={{ x: 160, y: 0, rotate: 15 }}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/2 bg-white dark:bg-slate-800 px-2.5 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-amber-500 flex items-center gap-1 z-10"
+        >
+          <span className="w-2 h-2 rounded-full bg-amber-500" /> INFP
+        </motion.div>
+
+        <motion.div
+          initial={{ x: -145, y: 50, rotate: 5 }}
+          animate={{ y: [50, 58, 50] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/2 bg-white dark:bg-slate-800 px-2.5 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-indigo-500 flex items-center gap-1 z-10"
+        >
+          <span className="w-2 h-2 rounded-full bg-indigo-500" /> ENTJ
+        </motion.div>
+
+        <motion.div
+          initial={{ x: 145, y: 50, rotate: -12 }}
+          animate={{ y: [50, 42, 50] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/2 bg-white dark:bg-slate-800 px-2.5 py-1.5 rounded-xl shadow-md border border-gray-100 dark:border-slate-700 text-xs font-bold text-purple-500 flex items-center gap-1 z-10"
+        >
+          <span className="w-2 h-2 rounded-full bg-purple-500" /> ESTP
+        </motion.div>
+
+        <motion.div
+          initial={{ y: 0, rotate: 2 }}
+          animate={{ y: [0, -4, 0], scale: [1, 1.02, 1] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700 text-center z-10"
+          className="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700 text-center z-20"
         >
           <p className="text-xs text-gray-400 dark:text-slate-400 font-medium">Tipe Kepribadian Anda</p>
           <p className="text-xl font-black text-gray-800 dark:text-white tracking-widest mt-0.5">????</p>

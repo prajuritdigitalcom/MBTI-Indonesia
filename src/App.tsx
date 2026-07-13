@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Moon, Sun, History, Sparkles } from 'lucide-react';
+import { History, Sparkles, Brain } from 'lucide-react';
 
 // Subcomponents
 import SplashScreen from './components/SplashScreen';
@@ -16,7 +16,7 @@ import { calculateMBTI, CalculatedScores } from './utils/mbtiCalculator';
 import { HistoryRecord } from './types';
 
 export default function App() {
-  const [view, setView] = useState<'splash' | 'welcome' | 'info' | 'test' | 'loading' | 'results' | 'history'>('splash');
+  const [view, setView] = useState<'splash' | 'welcome' | 'info' | 'test' | 'loading' | 'results' | 'history'>('welcome');
   const [userName, setUserName] = useState('');
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [scores, setScores] = useState<CalculatedScores | null>(null);
@@ -24,36 +24,15 @@ export default function App() {
   const [hasHistory, setHasHistory] = useState(false);
   const [isNewResult, setIsNewResult] = useState(false);
 
-  // 1. Dark Mode setup
+  // 1. Force Disable Dark Mode
   useEffect(() => {
     try {
-      const savedTheme = localStorage.getItem('mbti_indonesia_theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-      setDarkMode(isDark);
-      
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      document.documentElement.classList.remove('dark');
+      setDarkMode(false);
     } catch (e) {
       console.error(e);
     }
   }, []);
-
-  const toggleDarkMode = () => {
-    const nextDark = !darkMode;
-    setDarkMode(nextDark);
-    if (nextDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('mbti_indonesia_theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('mbti_indonesia_theme', 'light');
-    }
-  };
 
   // 2. Local History existence check
   const checkHistory = () => {
@@ -216,20 +195,17 @@ export default function App() {
               onClick={() => setView('welcome')}
               className="flex items-center gap-2.5 hover:opacity-85 transition-opacity text-left cursor-pointer"
             >
-              <div className="relative w-8 h-8 rounded-lg bg-linear-to-br from-[#fe4c6f] to-[#6B5BFF] flex items-center justify-center text-white font-extrabold text-xs">
-                J
+              <div className="relative w-8 h-8 rounded-lg bg-linear-to-br from-[#fe4c6f] to-[#6B5BFF] flex items-center justify-center text-white">
+                <Brain size={18} className="text-white" />
               </div>
               <div>
-                <h1 className="text-sm font-black tracking-tight leading-none text-gray-900 dark:text-white">
+                <h1 className="text-lg font-black tracking-tight text-black">
                   MBTI <span className="text-[#fe4c6f]">Indonesia</span>
                 </h1>
-                <p className="text-[9px] font-bold text-gray-400 dark:text-slate-400 uppercase tracking-widest mt-0.5">
-                  OpenJung Core
-                </p>
               </div>
             </button>
 
-            {/* Actions: Theme toggle & History access */}
+            {/* Actions: History access */}
             <div className="flex items-center gap-1.5">
               {view === 'welcome' && hasHistory && (
                 <button
@@ -240,13 +216,6 @@ export default function App() {
                   <History size={18} />
                 </button>
               )}
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 text-gray-500 dark:text-slate-400 hover:text-gray-800 dark:hover:text-white transition-all hover:bg-gray-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer"
-                title={darkMode ? "Aktifkan Mode Terang" : "Aktifkan Mode Gelap"}
-              >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
             </div>
           </div>
         </header>
@@ -356,9 +325,6 @@ export default function App() {
         <footer className="py-6 px-4 text-center border-t border-gray-100 dark:border-slate-800 text-[11px] font-semibold text-gray-400 dark:text-slate-500 max-w-xl mx-auto w-full">
           <p>
             © 2026 Karya Prajurit Digital. Hak Cipta Dilindungi.
-          </p>
-          <p className="mt-1 text-gray-300 dark:text-slate-600 font-bold">
-            Dirancang Berdasarkan Fondasi Proyek OpenJung Core
           </p>
         </footer>
       )}
