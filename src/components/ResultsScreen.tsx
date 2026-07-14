@@ -4,7 +4,7 @@ import { toPng } from 'html-to-image';
 import { 
   Download, Share2, Copy, Check, RotateCcw, Award, 
   Briefcase, BookOpen, Heart, Shield, Lightbulb, Compass,
-  Calendar, Eye
+  Calendar, Eye, Brain
 } from 'lucide-react';
 import { CalculatedScores } from '../utils/mbtiCalculator';
 import { mbtiResults, traitNames } from '../data/mbtiResults';
@@ -586,7 +586,7 @@ export default function ResultsScreen({ scores, userName, onRetake, onViewHistor
           <div className="flex justify-between items-center z-10">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
-                <span className="font-black text-2xl tracking-widest text-white">J</span>
+                <Brain className="text-white" size={32} />
               </div>
               <div>
                 <h4 className="text-xl font-bold tracking-widest uppercase">MBTI Indonesia</h4>
